@@ -1,14 +1,6 @@
-!! Change this document for your own project by removing the placeholder text, adding your own text, adding helpful sections etc. etc. !!
+# TaskCraft
 
-# <Project Title>
-
-In a few sentences describe what your project is trying to solve.
-
-You can use [GitHub markdown
-notation](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-or [GitLab markdown notation](https://docs.gitlab.com/ee/user/markdown.html) in
-case you are using one of these platforms. This will give a nicely formatted
-documentation when looking at your project online.
+This application is supposed to provide functions to manage tasks in a team.
 
 ## Get started
 
