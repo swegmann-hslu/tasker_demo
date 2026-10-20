@@ -46,6 +46,29 @@ elements should be easy to understand.
    and use a continuous numbering scheme in the form
    `0001-framework-choice.md`.
 
+## Requirements and domain documentation
+
+`docs/use-cases.md` and `docs/data-model.md` are living descriptions of the
+agreed application behavior and domain concepts. Consult both documents before
+making new product or architectural decisions and before adding or modifying
+requirements or use cases.
+
+Keep the documents consistent with each other and with the implementation:
+
+ * When a requirement or use case changes application behavior, update
+   `docs/use-cases.md` as part of the same change.
+ * When a requirement or use case introduces or changes stored information,
+   relationships, or domain rules, update `docs/data-model.md` as part of the
+   same change.
+ * When the data model changes, review the existing use cases for consequences
+   and update them where necessary.
+ * Record important scope, data-model, authorization, or architectural choices
+   in `docs/decisions` in addition to updating the affected living documents.
+
+Do not treat the current use cases or data model as immutable. Extend or revise
+them deliberately when new requirements are agreed, and avoid implementation
+changes that leave the documentation out of sync.
+
 ## Educational collaboration
 
 This template is used for learning software development, not only for producing

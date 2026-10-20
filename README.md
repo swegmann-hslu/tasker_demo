@@ -51,6 +51,9 @@ uv run pytest
 The initial framework decision is documented in
 `docs/decisions/0001-framework-choice.md`.
 
+The initial product behavior is described in `docs/use-cases.md`, and its
+conceptual entities and rules are recorded in `docs/data-model.md`.
+
 ## Container
 
 Build and run the included Docker image:
