@@ -1,13 +1,9 @@
-from pathlib import Path
+from flask import Flask
 
-STATIC_DIR = Path(__file__).parent / "static"
-INDEX_HTML = STATIC_DIR / "index.html"
+app = Flask(__name__)
 
 
-def app(environ, start_response):
-    html_file = INDEX_HTML.read_bytes()
-    start_response(
-        "200 OK",
-        [("Content-Type", "text/html"), ("Content-Length", str(len(html_file)))],
-    )
-    return [html_file]
+@app.get("/")
+def index():
+    """Serve the application's static landing page."""
+    return app.send_static_file("index.html")
