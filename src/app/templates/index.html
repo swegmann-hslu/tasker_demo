@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TaskCraft</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <main>
+        <header>
+            <p class="eyebrow">TaskCraft</p>
+            <h1>Create a task</h1>
+            <p>Capture what needs doing and when it is due.</p>
+        </header>
+
+        {% if created %}
+        <p class="confirmation" role="status">Task created successfully.</p>
+        {% endif %}
+
+        <form action="{{ url_for('create_task') }}" method="post" novalidate>
+            <div class="field">
+                <label for="title">Title <span aria-hidden="true">*</span></label>
+                <input id="title" name="title" value="{{ form_data.get('title', '') }}"
+                       aria-describedby="title-error" {% if errors.title %}aria-invalid="true"{% endif %}>
+                {% if errors.title %}<p class="error" id="title-error">{{ errors.title }}</p>{% endif %}
+            </div>
+
+            <div class="field">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4">{{ form_data.get('description', '') }}</textarea>
+            </div>
+
+            <div class="field">
+                <label for="due-date">Due date <span aria-hidden="true">*</span></label>
+                <input id="due-date" name="due_date" type="date"
+                       value="{{ form_data.get('due_date', '') }}" aria-describedby="due-date-error"
+                       {% if errors.due_date %}aria-invalid="true"{% endif %}>
+                {% if errors.due_date %}<p class="error" id="due-date-error">{{ errors.due_date }}</p>{% endif %}
+            </div>
+
+            <button type="submit">Create task</button>
+        </form>
+
+        <section aria-labelledby="task-overview-heading">
+            <h2 id="task-overview-heading">Your tasks</h2>
+            {% if tasks %}
+            <ul class="tasks">
+                {% for task in tasks %}
+                <li>
+                    <h3>{{ task.title }}</h3>
+                    {% if task.description %}<p>{{ task.description }}</p>{% endif %}
+                    <dl>
+                        <div><dt>Due</dt><dd>{{ task.due_date }}</dd></div>
+                        <div><dt>Assignee</dt><dd>{{ task.assignee_id }}</dd></div>
+                        <div><dt>Status</dt><dd>{{ 'Done' if task.is_done else 'Open' }}</dd></div>
+                    </dl>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No tasks yet. Create your first task above.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+
+</html>

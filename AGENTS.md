@@ -83,3 +83,15 @@ placement questions, and decision records in this project.
 
 Decision records for this project belong in `docs/decisions` and should be
 based on `docs/decision-template.md`.
+
+## Dealing with numbering
+
+* Create requirements, use cases, and ADRs as individual Markdown files.
+* Generate a unique ULID for every new artifact.
+* Prefix IDs with REQ-, UC-, or ADR-.
+* Never derive an ID from the current highest ID.
+* Never reuse or change an existing artifact ID.
+* Use descriptive kebab-case filenames.
+* Reference artifacts by their immutable IDs.
+* Do not manually edit generated indexes.
+* Run documentation validation before committing.

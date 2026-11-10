@@ -1,0 +1,92 @@
+:root {
+    color: #17211b;
+    background: #f4f1e8;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+}
+
+body { margin: 0; }
+
+main {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 3rem 1.25rem;
+}
+
+.eyebrow {
+    color: #316b4d;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+form,
+.tasks li {
+    padding: 1.5rem;
+    border: 1px solid #c9c7bd;
+    border-radius: 0.75rem;
+    background: #fffdf7;
+}
+
+.field { margin-bottom: 1.25rem; }
+
+label,
+input,
+textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    margin-bottom: 0.35rem;
+    font-weight: 650;
+}
+
+input,
+textarea {
+    padding: 0.65rem;
+    border: 1px solid #787b74;
+    border-radius: 0.35rem;
+    font: inherit;
+}
+
+button {
+    padding: 0.7rem 1.1rem;
+    border: 0;
+    border-radius: 0.35rem;
+    color: white;
+    background: #316b4d;
+    font: inherit;
+    font-weight: 700;
+}
+
+.confirmation {
+    padding: 0.8rem;
+    border-left: 0.3rem solid #316b4d;
+    background: #dff3e6;
+}
+
+.error {
+    margin: 0.25rem 0 0;
+    color: #a1261e;
+}
+
+section { margin-top: 3rem; }
+
+.tasks {
+    display: grid;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.tasks h3 { margin-top: 0; }
+
+dl div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+dt { font-weight: 700; }
+dd { margin: 0; }
