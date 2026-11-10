@@ -1,6 +1,8 @@
 import sqlite3
+from threading import Thread
 
 import pytest
+from werkzeug.serving import make_server
 
 from app import create_app
 
@@ -24,6 +26,20 @@ def app(database_path):
 @pytest.fixture
 def client(app):
     return app.test_client()
+
+
+@pytest.fixture
+def live_server(app):
+    """Run the test application on a free local port for browser tests."""
+    server = make_server("127.0.0.1", 0, app, threaded=True)
+    server_thread = Thread(target=server.serve_forever, daemon=True)
+    server_thread.start()
+
+    try:
+        yield f"http://127.0.0.1:{server.server_port}"
+    finally:
+        server.shutdown()
+        server_thread.join()
 
 
 @pytest.fixture

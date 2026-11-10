@@ -38,8 +38,30 @@ Then open <http://127.0.0.1:8000>.
 
 ## Run the tests
 
+Install the Chromium browser used by the end-to-end test once:
+
+```powershell
+uv run playwright install chromium
+```
+
+Then run the complete test suite in headless mode:
+
 ```powershell
 uv run pytest
+```
+
+On a Linux CI agent, install Chromium and its operating-system dependencies
+before running pytest:
+
+```bash
+uv run playwright install --with-deps chromium
+uv run pytest
+```
+
+To watch the browser workflow locally while debugging it, run:
+
+```powershell
+uv run pytest tests/test_uc_01_create_task_e2e.py --headed
 ```
 
 ## Project structure
@@ -48,7 +70,8 @@ uv run pytest
    handles SQLite persistence.
  * `src/app/templates/` and `src/app/static/` contain the server-rendered
    frontend and its stylesheet.
- * `tests/` contains automated user acceptance tests.
+ * `tests/` contains Flask integration tests and a Playwright browser acceptance
+   test.
  * `docs/decisions/` records architectural decisions and their tradeoffs.
 
 The initial framework decision is documented in
