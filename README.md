@@ -64,14 +64,27 @@ To watch the browser workflow locally while debugging it, run:
 uv run pytest tests/test_uc_01_create_task_e2e.py --headed
 ```
 
+The same UC-01 workflow is also available as a human-readable Gherkin
+specification in `tests/features/uc_01_create_task.feature`. Run it with a
+step-by-step terminal report using:
+
+```powershell
+uv run pytest tests/test_uc_01_create_task_bdd.py -vv --gherkin-terminal-reporter
+```
+
+The Gherkin feature describes the behavior for reviewers. Its Python step
+definitions connect those sentences to Playwright browser actions. Both the
+plain Playwright test and the BDD version remain intentionally available so
+their tradeoffs can be compared.
+
 ## Project structure
 
  * `src/app/__init__.py` creates the Flask application, defines its routes, and
    handles SQLite persistence.
  * `src/app/templates/` and `src/app/static/` contain the server-rendered
    frontend and its stylesheet.
- * `tests/` contains Flask integration tests and a Playwright browser acceptance
-   test.
+ * `tests/` contains Flask integration tests, direct Playwright browser tests,
+   and pytest-bdd/Gherkin executable specifications.
  * `docs/decisions/` records architectural decisions and their tradeoffs.
 
 The initial framework decision is documented in
